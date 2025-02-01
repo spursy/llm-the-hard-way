@@ -28,6 +28,10 @@
 - RNN: Recurrent Neural Network（循环神经网络）
 - CNN: Convolutional Neural Network（卷积神经网络）
 - LSTM: Long Short-Term Memory
+- MCTS：Monte Carlo Tree Search (蒙特卡洛搜索树)
+- UCT: Upper Confidence Bound for Trees (蒙特卡洛算法中的核心算法策略)
+- Beam Search（束搜索）
+- Process-Based Reward Modek (基于过程的模型奖励)
 
 
 
