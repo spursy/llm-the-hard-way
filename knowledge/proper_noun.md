@@ -32,6 +32,11 @@
 - UCT: Upper Confidence Bound for Trees (蒙特卡洛算法中的核心算法策略)
 - Beam Search（束搜索）
 - Process-Based Reward Modek (基于过程的模型奖励)
+- Cross Entropy Loss（交叉损失函数）
+- MSE: Mean Squared Error（均方误差）
+- KL 散度：Kullback-Leibler Divergence
+
+
 
 
 
