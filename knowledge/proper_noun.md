@@ -35,6 +35,8 @@
 - Cross Entropy Loss（交叉损失函数）
 - MSE: Mean Squared Error（均方误差）
 - KL 散度：Kullback-Leibler Divergence
+- FFN: Feed-Forwrd Network（前馈神经网络）
+- Residual Connection: (残差连接)
 
 
 
