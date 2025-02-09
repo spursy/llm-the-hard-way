@@ -65,7 +65,7 @@ DeepSeek-R1-Distill-Qwen-32B 的推理速度比原始模型提高了约 50 倍
 
 ## DeepSeek 模型
 
-![deepseek-models](./pics/deepseek-models.png)
+![deepseek-models](../pics/deepseek-models.png)
 
 ### 通用语言模型
 
@@ -141,7 +141,7 @@ DeepSeek-R1-Distill-Qwen-32B 的推理速度比原始模型提高了约 50 倍
 - Maintain response like #1（neutral） 
 - Avoid response like #2 (negative)
 
-![grpo](./pics/grpo.png)
+![grpo](../pics/grpo.png)
 
 
 
