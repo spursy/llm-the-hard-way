@@ -37,6 +37,15 @@
 - KL 散度：Kullback-Leibler Divergence
 - FFN: Feed-Forwrd Network（前馈神经网络）
 - Residual Connection: (残差连接)
+- AIME: American Invitational Mathematics Examination
+- Math-500: 包含 500 个测试样本的 MATH 评测集，用于全面考察数学解题能力
+- GPQA Diamond: 一个困难的智力基准，用于测试化学、物理和生物方面的专业知识
+- LiveCode Bench: 一个代码生成基准，用于评估 LLM 的编程能力
+- Codeforces: 一个在线编程竞赛平台，提供各种难度的编程问题
+- Pass@k: 一种衡量 LLM 生成多个候选答案时，至少有一个答案正确的概率指标
+- cons@64：模型在 64 次尝试中的综合一致性，衡量模型准确率的指标之一
+
+
 
 
 

@@ -165,9 +165,15 @@ DeepSeek-R1-Distill-Qwen-32B 的推理速度比原始模型提高了约 50 倍
 
 
 
+
+
 **Reference**
 
 - [深度解析 DeepSeek 蒸馏技术](https://mp.weixin.qq.com/s/BDQ75O3MNePGmkFd5iscjw)
 - [一文搞懂 DeepSeek 大模型的版本及关系](https://mp.weixin.qq.com/s/BjzWewpt8FYt1_gyVBsqog)
 - [The Illustrated DeepSeek-R1](https://substack.com/inbox/post/155812052)
 - [Twitter: GRPO - group relative policy optimization](https://x.com/virattt/status/1885102056546910672?s=46&t=ulYQEDJ7GQSP3RJjsg3CJw)
+- [Jay Alammar: 图解 DeepSeel-R1](https://mp.weixin.qq.com/s/bk-XDLMwwA9WaFwJOgeIpg)
+- [The Illustrated DeepSeek-R1](https://newsletter.languagemodels.co/p/the-illustrated-deepseek-r1)
+- [混合专家模型（MoE）到底是什么？看完这篇，你也能讲明白！](https://mp.weixin.qq.com/s/5GwzX7LpWanlJwGZPTv-tA)
+- [A Visual Guide to Mixture of Experts (MoE)](https://substack.com/home/post/p-148217245)
