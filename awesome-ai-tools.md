@@ -13,7 +13,7 @@ With tools for code generation, test workflowing, and AI chat, Qodo Gen helps de
 
 ## Jan 
 
--[jan](https://jan.ai/)
+- [jan](https://jan.ai/)
 
 - Jan is an open source Chat-GPT-alternative that runs 100% offline
 
