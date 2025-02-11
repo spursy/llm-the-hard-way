@@ -44,6 +44,11 @@
 - Codeforces: 一个在线编程竞赛平台，提供各种难度的编程问题
 - Pass@k: 一种衡量 LLM 生成多个候选答案时，至少有一个答案正确的概率指标
 - cons@64：模型在 64 次尝试中的综合一致性，衡量模型准确率的指标之一
+- TRL: Transformer Reinforcement Learning（强化学习微调模型）
+- PEFT：Parameter-Efficient Fine-Tuning（高效微调）
+- DPO: Dirct perference optimization（直接偏好优化方法，用于大语言模型的输出与人类对齐）
+
+
 
 
 

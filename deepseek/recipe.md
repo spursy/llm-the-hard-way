@@ -34,7 +34,7 @@ This is a large number of long chain-of-thought examples (600,000 of them). Thes
 #### 2. An interim high-quality reasoning LLM
 
 `
-It is significant not because it's a great LLM to use, but because it required so little labeled data alongside large-scale reinforcement learning resulting in a model that exels at solving reasoning problems.
+It is significant not because it's a great LLM to use, but because it required so little labeled data alongside large-scale reinforcement learning resulting in a model that excels at solving reasoning problems.
 `
 
 `
@@ -42,6 +42,35 @@ The outputs of unnnamed speciallist reasining model can be used to train a model
 `
 
 #### 3. Creating reasoning models with large-scale refinforcement learning (RL)
+
+##### 3.1 Large-Scale Ressoning-Oriented Reinforcement Learning（R1-Zero）
+
+- RL is used to create the interim reasoning model
+- This model is then used to generate the SFT reasoning examples
+- DeepSeek-R1-Zero is used to create the interim model
+- R1-Zero is special because it is able to excel at reasioning tasks without having a labeled SFT training set (Its training goes dirctly from a pre-trained base model through a RL training peocess, not SFT step)
+
+![deepseek-r1-zero](../pics/deepseek-r1-zero.png)
+
+**Data has always been the fuel for ML mode capability, How can this model depart from this history?**
+
+- Modern base model have crossed a certain threadhold of quality and capability (this base model was trained on 14.8 trillion high-quality tokens)
+- Reasoning problems, in contrast to general chat or writing requests, can be automatically verified or labeled
+
+**Example: Automatic Verification of a Reasioning Problem**
+
+`
+Write python code that takes a list of numbers, returns them in a sorted order, but also adds 42 at the start.
+`
+
+A question like this lends itself to many ways of automatic verifaction.
+
+- A software linter can check if the completion is proper python code or not
+- Executing the python code to see if it even runs
+- Other modern coding LLMs can create unit tests to verify the desired behavior 
+- Measuring execution time and making the training process perfer more performant solution over other solutions - even if they're correct python programs that solve the issue
+
+
 
 
 
