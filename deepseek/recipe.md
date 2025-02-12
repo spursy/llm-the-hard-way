@@ -70,6 +70,65 @@ A question like this lends itself to many ways of automatic verifaction.
 - Other modern coding LLMs can create unit tests to verify the desired behavior 
 - Measuring execution time and making the training process perfer more performant solution over other solutions - even if they're correct python programs that solve the issue
 
+**Example：**
+
+![deepseek-r1-zero-1](../pics/deepseek-r1-zero-1.png)
+
+We can automatically check (with no human intervention)
+
+- The first completion is not even code
+- The second one is code, but is not python code
+- The third is a possible solution, but fails the unit tests
+- The forth is a correct solution
+
+These are all signals that can directly used to improve the model. This is of course done over many examples (in mini-batches) and over successive training steps.
+
+**DeepSeek-R1-Zero Issue:**
+
+`
+DeepSeek-R1-Zero struggles with challenges like poor readability, and language mixing.
+`
+
+**DeepSeek-R1-Zero Usages:**
+
+- creating an interim reasoning model to generate SFT data points
+- Training the R1 model to improve on reasoning and non-reasoning problems (using other types of verifiers)
+
+#### 3.2 Creating SFT reasoning data with the interim reasioning model
+
+To make the interim reasoning model more useful, it goes through an supervised fine-tunning (SFT) training step on a few thousand examples of reasoning problems (some of which are generated and filtered from R1-Zero).
+
+![deepseek-interim](../pics/deepseek-r1-interim.png)
+
+`
+To prevent the early unstable code start phase of RL training from the base model, for DeekSeek-R1 we construct and collect a small amount of long CoT data to fine-tune the model as the initial RL actor.
+
+To collect such data, we have explored several approaches: using few-shot prompting with a long CoT as an example, directly prompting models to generate detailed answers with reflection and verification, gathering DeepSeek-R1-Zero outputs in a readable format, and fefining the results through post-processing by human annotators.
+`
+
+![sft](../pics/deepseek-sft.png)
+
+`
+If you're new to the concept of Supervised Fine-Tuuning (SFT), that is the process that presents the mode with training examples in the form of prompt and correct completion.
+`
+
+#### 3.3 General RL training phase
+
+![general-rl](../pics/deepseek-general-rl.png)
+
+`
+This enable R1 to excel at reasoning as well as other non-reasioning tasks. 
+`
+
+### Architecture
+
+![architecture-1](../pics/deepseek-r1-architecture-1.png)
+
+DeepSeek-R1 is a stack of Transformer decoder blocks, It's made up 61 of them. The first three are dense, but the rest are mixture-of-experts layer.
+
+In terms of model dimension size and other hyperparameters, they look like this:
+
+![deepseel-2](../pics/deepseek-r1-architecture-2.png)
 
 
 
@@ -87,3 +146,7 @@ A question like this lends itself to many ways of automatic verifaction.
 **Reference**
 
 -[图解 DeepSeek-R1](https://zhuanlan.zhihu.com/p/21175143007)
+- [The Illustrated DeepSeek-R1](https://substack.com/home/post/p-155812052)
+- [DeepSeek-V3 Techical Report](https://arxiv.org/pdf/2412.19437v1)
+- [DeepSeekMoE: Towards Ultimate Expert Speciallization in Mixture-of-Experts Language Models](https://arxiv.org/pdf/2401.06066)
+- [gotta better illustration of r1](https://x.com/himanshustwts/status/1885046490395029569?s=46&t=ulYQEDJ7GQSP3RJjsg3CJw)

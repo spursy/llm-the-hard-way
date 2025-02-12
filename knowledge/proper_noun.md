@@ -47,6 +47,9 @@
 - TRL: Transformer Reinforcement Learning（强化学习微调模型）
 - PEFT：Parameter-Efficient Fine-Tuning（高效微调）
 - DPO: Dirct perference optimization（直接偏好优化方法，用于大语言模型的输出与人类对齐）
+- GGUF: GPT-Generated Unifield Format (转为大语言模型涉及的二进制文件格式)
+- GML: Graph Modeling Language（能够处理和执行使用图建模语言表示的图结构的组件）
+- VLLM: Virtual Large Language Model (一个用于优化大型语言模型推理的高效系统)
 
 
 
