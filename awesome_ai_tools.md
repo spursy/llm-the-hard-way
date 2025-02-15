@@ -115,9 +115,18 @@ Jan is an open source Chat-GPT-alternative that runs 100% offline
 - 模型量化：将模型参数从 32 位浮点数转换为 16 位浮点数，甚至 8、4 位整数，以牺牲一定的模型精度来获取推理速度的提升
 
 
+## Zonos
+
+- [Zonos](https://github.com/Zyphra/Zonos)
+
+`
+Zonos is a leading open-weight text-to-speech model trained on more than 2000k hours of varied multilingual speech, delivering expressiveness and quality on par with-or even surpassing-top TTS provides.
+`
+
 
 
 
 
 **Reference**
 - [Run ai locally with jan](https://x.com/jandotai/status/1884870577359610312?s=46&t=ulYQEDJ7GQSP3RJjsg3CJw)
+- [新发布的最强开源模型 Zonos](https://x.com/op7418/status/1889119439314165834?s=46&t=ulYQEDJ7GQSP3RJjsg3CJw)
