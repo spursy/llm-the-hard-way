@@ -51,7 +51,9 @@
 - GML: Graph Modeling Language（能够处理和执行使用图建模语言表示的图结构的组件）
 - VLLM: Virtual Large Language Model (一个用于优化大型语言模型推理的高效系统)
 - TDLearning: Temporal Difference Learning（时序差分学习）
-- MC: Monte Carlo（蒙特卡洛学习法）
+- PDF - Probability Density Function (概率密度函数)
+- SGD - Stochastic Gradient Descent（随机梯度下降）
+
 
 
 
