@@ -52,3 +52,4 @@ fastp
 bioconda
 qualimap
 multiqc
+relu
