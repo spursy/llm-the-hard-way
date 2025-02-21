@@ -8,7 +8,7 @@
 
 `Qodo Gen is your AI-powered coding assistant and mentor. Qodo helps you write, understand, test and review code with your team.
 
-With tools for code generation, test workflowing, and AI chat, Qodo Gen helps developers write quality code that works as intended, with fewer bugs.
+With tools for code generation, test workflow, and AI chat, Qodo Gen helps developers write quality code that works as intended, with fewer bugs.
 `
 
 ## Jan 
@@ -32,7 +32,7 @@ Jan is an open source Chat-GPT-alternative that runs 100% offline
 #### 提高训练速度
 
 - 与传统方法相比，显著提高训练速，最多可讲训练时间缩短 5 倍
-- 开启 Unsloth 后，Llama3-8B 的训练速度可提升 44.35%，训练时间可减少 30.72%
+- 开启 unsloth 后，Llama3-8B 的训练速度可提升 44.35%，训练时间可减少 30.72%
 
 #### 减少内存占用
 
@@ -60,7 +60,7 @@ Jan is an open source Chat-GPT-alternative that runs 100% offline
 
 ## TRL
 
-**（Transformer Refinforcement Learning）**
+**（Transformer Reinforcement Learning）**
 
 - [TRL](https://github.com/huggingface/trl)
 
@@ -69,7 +69,7 @@ Jan is an open source Chat-GPT-alternative that runs 100% offline
 - 使用强化学习微调模型：使 RL 的步骤更容易和灵活，让每个人可以在自己的数据集和训练设置上用 RL 微调 LM（可使用此算法微调模型以生成正面电影评论、进行受控生成或江西的模型的毒性）
 - 支持 PPO 算法
 - 支持 PEFT 参数微调
-- 全栈工具：可用于使用监督微调步骤（SFT）、奖励模型（RM）和近端策略优化（PPO） 以及直接偏好优化（DPO）等微调方法和对齐转换器语言和扩散模型
+- 全栈工具：可用于使用监督微调步骤（SFT）、奖励模型（RM）和近端策略优化（PPO）以及直接偏好优化（DPO）等微调方法和对齐转换器语言和扩散模型
 - 简化 LLM 微调：可以直接监督微调开放式 LLM，支持数据集格式，包括会话和指令格式，只对完成情况进行训练，忽略提示，打包数据集，提高训练效率
 
 ## XTuner
@@ -100,8 +100,8 @@ Jan is an open source Chat-GPT-alternative that runs 100% offline
 
 - 高性能：通过优化算法和底层实现，提升大模型的推理性能
 - 跨平台：纯 c++ 实现，便于跨平台移植，比如在 android 上直接编译
-- 多平台加速：ARM 平台支持 NEON 指令加速，X86平台支持 AVX 指令集加速，NVIDIA 平台支持 CUDA 加速
-- 多种精度：支持浮点模型（FP32），半精度模型（FP16），量化模型（INT8， INT4）加速
+- 多平台加速：ARM 平台支持 NEON 指令加速，X86 平台支持 AVX 指令集加速，NVIDIA 平台支持 CUDA 加速
+- 多种精度：支持浮点模型（FP32），半精度模型（FP16），量化模型（INT8，INT4）加速
 
 ## llama.cpp
 

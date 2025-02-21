@@ -31,7 +31,7 @@ conda config --set channel_priority strict
 - 创建环境
 
 `
-micromamba createe -n myenv
+micromamba create -n myenv
 `
 
 - 激活环境

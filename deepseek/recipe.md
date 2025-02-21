@@ -4,7 +4,7 @@
 
 ### How LLMs are trained
 
-#### The gerneral recipe of creating a high-quality LLM over three steps?
+#### The general recipe of creating a high-quality LLM over three steps?
 
 ![llm-flow](../pics/llm-flow.png)
 
@@ -21,7 +21,7 @@
 DeepSeek-R1 generates one token at a time, except it excels at solving math and reasoning problems because it is able to spend more time  processing a problem through the process of generating thinking tokens that explain its chain of thought
 `
 
-### DeepSeek-R1 Traning Recipe
+### DeepSeek-R1 Training Recipe
 
 ![deepseek-recipe](../pics/deepseek.png)
 
@@ -38,37 +38,37 @@ It is significant not because it's a great LLM to use, but because it required s
 `
 
 `
-The outputs of unnnamed speciallist reasining model can be used to train a model general model that can also do other, non-reasoning tasks, to the level users expect from a LLM.
+The outputs of unnamed specialist reasoning model can be used to train a model general model that can also do other, non-reasoning tasks, to the level users expect from a LLM.
 `
 
-#### 3. Creating reasoning models with large-scale refinforcement learning (RL)
+#### 3. Creating reasoning models with large-scale reinforcement learning (RL)
 
-##### 3.1 Large-Scale Ressoning-Oriented Reinforcement Learning（R1-Zero）
+##### 3.1 Large-Scale Reasoning-Oriented Reinforcement Learning (R1-Zero)
 
 - RL is used to create the interim reasoning model
 - This model is then used to generate the SFT reasoning examples
 - DeepSeek-R1-Zero is used to create the interim model
-- R1-Zero is special because it is able to excel at reasioning tasks without having a labeled SFT training set (Its training goes dirctly from a pre-trained base model through a RL training peocess, not SFT step)
+- R1-Zero is special because it is able to excel at reasoning tasks without having a labeled SFT training set (Its training goes directly from a pre-trained base model through a RL training process, not SFT step)
 
 ![deepseek-r1-zero](../pics/deepseek-r1-zero.png)
 
 **Data has always been the fuel for ML mode capability, How can this model depart from this history?**
 
-- Modern base model have crossed a certain threadhold of quality and capability (this base model was trained on 14.8 trillion high-quality tokens)
+- Modern base model have crossed a certain threshold of quality and capability (this base model was trained on 14.8 trillion high-quality tokens)
 - Reasoning problems, in contrast to general chat or writing requests, can be automatically verified or labeled
 
-**Example: Automatic Verification of a Reasioning Problem**
+**Example: Automatic Verification of a Reasoning Problem**
 
 `
 Write python code that takes a list of numbers, returns them in a sorted order, but also adds 42 at the start.
 `
 
-A question like this lends itself to many ways of automatic verifaction.
+A question like this lends itself to many ways of automatic verification.
 
 - A software linter can check if the completion is proper python code or not
 - Executing the python code to see if it even runs
 - Other modern coding LLMs can create unit tests to verify the desired behavior 
-- Measuring execution time and making the training process perfer more performant solution over other solutions - even if they're correct python programs that solve the issue
+- Measuring execution time and making the training process prefer more performant solution over other solutions - even if they're correct python programs that solve the issue
 
 **Example：**
 
@@ -94,22 +94,22 @@ DeepSeek-R1-Zero struggles with challenges like poor readability, and language m
 - creating an interim reasoning model to generate SFT data points
 - Training the R1 model to improve on reasoning and non-reasoning problems (using other types of verifiers)
 
-#### 3.2 Creating SFT reasoning data with the interim reasioning model
+#### 3.2 Creating SFT reasoning data with the interim reasoning model
 
 To make the interim reasoning model more useful, it goes through an supervised fine-tunning (SFT) training step on a few thousand examples of reasoning problems (some of which are generated and filtered from R1-Zero).
 
 ![deepseek-interim](../pics/deepseek-r1-interim.png)
 
 `
-To prevent the early unstable code start phase of RL training from the base model, for DeekSeek-R1 we construct and collect a small amount of long CoT data to fine-tune the model as the initial RL actor.
+To prevent the early unstable code start phase of RL training from the base model, for DeepSeek-R1 we construct and collect a small amount of long CoT data to fine-tune the model as the initial RL actor.
 
-To collect such data, we have explored several approaches: using few-shot prompting with a long CoT as an example, directly prompting models to generate detailed answers with reflection and verification, gathering DeepSeek-R1-Zero outputs in a readable format, and fefining the results through post-processing by human annotators.
+To collect such data, we have explored several approaches: using few-shot prompting with a long CoT as an example, directly prompting models to generate detailed answers with reflection and verification, gathering DeepSeek-R1-Zero outputs in a readable format, and refining the results through post-processing by human annotators.
 `
 
 ![sft](../pics/deepseek-sft.png)
 
 `
-If you're new to the concept of Supervised Fine-Tuuning (SFT), that is the process that presents the mode with training examples in the form of prompt and correct completion.
+If you're new to the concept of Supervised Fine-Tuning (SFT), that is the process that presents the mode with training examples in the form of prompt and correct completion.
 `
 
 #### 3.3 General RL training phase
@@ -117,7 +117,7 @@ If you're new to the concept of Supervised Fine-Tuuning (SFT), that is the proce
 ![general-rl](../pics/deepseek-general-rl.png)
 
 `
-This enable R1 to excel at reasoning as well as other non-reasioning tasks. 
+This enable R1 to excel at reasoning as well as other non-reasoning tasks. 
 `
 
 ### Architecture
@@ -126,9 +126,9 @@ This enable R1 to excel at reasoning as well as other non-reasioning tasks.
 
 DeepSeek-R1 is a stack of Transformer decoder blocks, It's made up 61 of them. The first three are dense, but the rest are mixture-of-experts layer.
 
-In terms of model dimension size and other hyperparameters, they look like this:
+In terms of model dimension size and other hyper-parameter, they look like this:
 
-![deepseel-2](../pics/deepseek-r1-architecture-2.png)
+![deepseek-2](../pics/deepseek-r1-architecture-2.png)
 
 
 
@@ -147,6 +147,6 @@ In terms of model dimension size and other hyperparameters, they look like this:
 
 -[图解 DeepSeek-R1](https://zhuanlan.zhihu.com/p/21175143007)
 - [The Illustrated DeepSeek-R1](https://substack.com/home/post/p-155812052)
-- [DeepSeek-V3 Techical Report](https://arxiv.org/pdf/2412.19437v1)
-- [DeepSeekMoE: Towards Ultimate Expert Speciallization in Mixture-of-Experts Language Models](https://arxiv.org/pdf/2401.06066)
+- [DeepSeek-V3 Technical Report](https://arxiv.org/pdf/2412.19437v1)
+- [DeepSeekMoE: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models](https://arxiv.org/pdf/2401.06066)
 - [gotta better illustration of r1](https://x.com/himanshustwts/status/1885046490395029569?s=46&t=ulYQEDJ7GQSP3RJjsg3CJw)

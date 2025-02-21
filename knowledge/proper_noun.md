@@ -2,7 +2,7 @@
 
 ## LLM
 
-- Trasformer: Attention is all you need (self-attention)
+- Transformer: Attention is all you need (self-attention)
 - Bert: Bidirectional Encoder Representations from Transformers
 - Gpt: Generative Pre-trained Transformer
 - MLM: Masked Language Model
@@ -46,8 +46,8 @@
 - cons@64：模型在 64 次尝试中的综合一致性，衡量模型准确率的指标之一
 - TRL: Transformer Reinforcement Learning（强化学习微调模型）
 - PEFT：Parameter-Efficient Fine-Tuning（高效微调）
-- DPO: Dirct perference optimization（直接偏好优化方法，用于大语言模型的输出与人类对齐）
-- GGUF: GPT-Generated Unifield Format (转为大语言模型涉及的二进制文件格式)
+- DPO: Direct preference optimization（直接偏好优化方法，用于大语言模型的输出与人类对齐）
+- GGUF: GPT-Generated Unified Format (转为大语言模型涉及的二进制文件格式)
 - GML: Graph Modeling Language（能够处理和执行使用图建模语言表示的图结构的组件）
 - VLLM: Virtual Large Language Model (一个用于优化大型语言模型推理的高效系统)
 - TDLearning: Temporal Difference Learning（时序差分学习）

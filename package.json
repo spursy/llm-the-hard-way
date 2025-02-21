@@ -1,0 +1,22 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:staged": "lint-staged"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cspell-cli": "github:streetsidesoftware/cspell-cli",
+    "lint-staged": "^15.4.3",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": "lint:staged",
+  "lint-staged": {
+    "*.md": "autocorrect --fix ./",
+    "*": "cspell-cli  '**'"
+  }
+}

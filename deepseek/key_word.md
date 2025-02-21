@@ -78,19 +78,19 @@ DeepSeek-R1-Distill-Qwen-32B 的推理速度比原始模型提高了约 50 倍
 #### DeepSeek-V3
 
 `
-基于 DeepSeek-V3-Base，通过后训练阶段优化。采用监督微调（SFT），使用 150 万条指令数据涵盖多个领域；强化学习（RL） 方面，采用规则基础和基于模型的奖励模型，通过 GRPO 优化。
+基于 DeepSeek-V3-Base，通过后训练阶段优化。采用监督微调（SFT），使用 150 万条指令数据涵盖多个领域；强化学习（RL）方面，采用规则基础和基于模型的奖励模型，通过 GRPO 优化。
 `
 
 #### DeepSeek-R1-Zero
 
 `
-基于 DeepSeek-V3-Base，直接应用强化学习（RL） 训练，无需依赖监督微调（SFT）。采用 GRPO 算法，奖励模型由准确性和格式奖励组成，设计了简单模板要求模型先产生推理过程再提供答案。
+基于 DeepSeek-V3-Base，直接应用强化学习（RL）训练，无需依赖监督微调（SFT）。采用 GRPO 算法，奖励模型由准确性和格式奖励组成，设计了简单模板要求模型先产生推理过程再提供答案。
 `
 
 #### DeepSeek-R1
 
 `
-基于 DeepSeek-V3-Base，通过多阶段训练和冷启动数据优化。收集数千条长推理链（CoT） 数据进行微调，强化学习类似 DeepSeek-R1-Zero。但使用冷启动数据七点，拒绝采样和监督微调结合替他领域的数据再训练，全场景强化学习进一步对齐人类偏好。
+基于 DeepSeek-V3-Base，通过多阶段训练和冷启动数据优化。收集数千条长推理链（CoT）数据进行微调，强化学习类似 DeepSeek-R1-Zero。但使用冷启动数据七点，拒绝采样和监督微调结合替他领域的数据再训练，全场景强化学习进一步对齐人类偏好。
 `
 
 #### 蒸馏模型
@@ -138,7 +138,7 @@ DeepSeek-R1-Distill-Qwen-32B 的推理速度比原始模型提高了约 50 倍
 **Step 5: Reinforce LLM to favor higher scores**
 
 - Favor response like #3 (positive)
-- Maintain response like #1（neutral） 
+- Maintain response like #1 (neutral) 
 - Avoid response like #2 (negative)
 
 ![grpo](../pics/grpo.png)

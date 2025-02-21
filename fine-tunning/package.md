@@ -1,6 +1,6 @@
 # Package
 
-## bitstandbytes
+## bitsandbytes
 
 - [bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes)
 
@@ -28,8 +28,8 @@
 
 - 多框架支持：Triton 支持多种深度学习和机器学习框架，包括 Tensorflow、BVIDIA、TensorRT、PyTorch、ONNX、OpenVINO 等
 - 高性能推理：通过动态批处理、并发执行、模型集成等技术，能够最大限度地提高模型的推理吞吐量和资源利用率
-- 灵活部署：支持在各种处理器（包括 GPU、CPU） 上运行，并可在云端、数据中心、边缘设备和嵌入式设备上部署
-- DevOps 和 MLOps 友好： 可以与 kubernetes 集成，已进行模型服务编排和扩展，并支持导出用于监控的 Prometheus 指标
+- 灵活部署：支持在各种处理器（包括 GPU、CPU）上运行，并可在云端、数据中心、边缘设备和嵌入式设备上部署
+- DevOps 和 MLOps 友好：可以与 kubernetes 集成，已进行模型服务编排和扩展，并支持导出用于监控的 Prometheus 指标
 - 模型集成：支持将多个模型组合成一个高效的推理流程，并通过模型分析器工具优化模型配置
 - 多种协议：支持 HTTP 和 gRPC 在内的多种通信协议
 - 易于使用：提供了 PyTriton 等工具，可以轻松地使用 Triton 为模型提供服务
@@ -56,7 +56,7 @@
 适用于各种深度学习任务，尤其是在显存资源有限的情况下，能够发挥出更大的优势。例如，在自然语言处理领域中，xFormers 可用于机器翻译、文本生成、情感分析等任务。此外，还可以用于计算机视觉、语音识别等领域。
 `
 
-## troch
+## torch
 
 `
 一个开源的 Python 机器学习库，主要用于深度学习领域的各种任务，如计算机视觉、自然语言处理和推荐系统。
