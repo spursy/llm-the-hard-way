@@ -61,7 +61,9 @@ name: myenv
 channels:
   - bioconda
   - conda-forge
+  - pytorch
 dependencies:
+  - python=3.10
   - qualimap=2.2
   - multiqc=1.12
 ```
@@ -85,6 +87,11 @@ function mmr { micromamba remove $Args}           # 移除包
 function mml { micromamba list}                # 查看安装包
 function mmda { micromamba deactivate }            # 退出环境
 
+python -m site  
+
+pip show torch # 查看包的详情信息
+
+micromamba env export > environment.yml
 ```
 
 

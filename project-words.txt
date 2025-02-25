@@ -53,3 +53,12 @@ bioconda
 qualimap
 multiqc
 relu
+TFLOPS
+tera
+Multihead
+figsize
+cmap
+coolwarm
+annot
+mathbb
+infty

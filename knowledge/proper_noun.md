@@ -53,6 +53,7 @@
 - TDLearning: Temporal Difference Learning（时序差分学习）
 - PDF - Probability Density Function (概率密度函数)
 - SGD - Stochastic Gradient Descent（随机梯度下降）
+- TFLOPS - Tera Floating-point Operations Per Second（每秒浮点运算次数）
 
 
 

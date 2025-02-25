@@ -8,4 +8,6 @@ dictionaryDefinitions:
 dictionaries:
   - project-words
 ignorePaths:
-  - 'node_modules'
+  - node_modules
+  - transformer/attention/environment.yml
+  - transformer/attention/attention.yml
