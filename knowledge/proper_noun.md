@@ -54,6 +54,10 @@
 - PDF - Probability Density Function (概率密度函数)
 - SGD - Stochastic Gradient Descent（随机梯度下降）
 - TFLOPS - Tera Floating-point Operations Per Second（每秒浮点运算次数）
+- SRAM - Static Random Access Memory（静态随机存取存储器）
+- GEMM - General Matrix Multiplication (通用矩阵乘法)
+- SIMT - Single Instruction Multiple Threads (单指令多线程)
+
 
 
 

@@ -65,3 +65,4 @@ infty
 RDMA
 mathrm
 Blakwell
+SIMT
