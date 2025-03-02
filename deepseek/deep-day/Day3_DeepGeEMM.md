@@ -20,6 +20,12 @@ GPU/TPU 的架构设计，都是高度针对矩阵乘法去优化的，以 NVDIA
 
 ## DeepGEMM
 
+### 简介
+
+`
+DeepGEMM 是一个支持 FP8 精度的高性能 GEMM（通用矩阵乘法）库，适用于矩阵和 MoE（Mixture of Experts，专用混合专家模型）计算。DeepGEMM 具有细粒度缩放功能，采用 CUDA 编写，使用轻量级即时（JIT）模块在运行时编译所有内核
+`
+
 ### 特点
 
 - 核心代码只有 300 行左右，最高可达 1358 TFLOPS
@@ -38,6 +44,31 @@ GPU/TPU 的架构设计，都是高度针对矩阵乘法去优化的，以 NVDIA
 `
 简单地说，普通的 AI 通常是稠密矩阵，MoE 因为不是全部激活，所以还会有稀疏矩阵，一般会分组计算，因此 MoE 中的矩阵乘法更加复杂
 `
+
+### 三种 GEMM 类型支持
+
+- 常规稠密 GEMM：通过函数 deep_gemm.gemm_fp8_fp8_bf16_nt 调用，适用于常规矩阵乘法
+- 分组 GEMM（连续布局，contiguous Layout）：针对 MoE 模型优化，仅对 M 轴分组，N 和 K 保持固定。这种设计适用于 MoE 专家共享相同形状的情况，将多个专家的 token 拼接成单一连续张量，适用于训练前向或推理预填充阶段。每个专家需对齐到 M 块大小。
+- 分组 GEMM（掩码分组，Masked Grouped GEMM）：支持推理解码阶段，结合 CUDA Graph 适应动态 token 分配。
+
+### 调度优化
+
+`
+DeepGEMM 遵循 CUTLASS 设计，其内核为 warp 专用，支持重叠式的数据移动，张量核心 MMA 指令和 CUDA 核心优化
+`
+
+- TMA（Tensor Memory Acceleration）：Hopper 架构的硬件特性，用于异步数据加载或移动（如 LHS 矩阵，缩放因子等），减少内存访问延迟
+- 指令重叠：内核采用 warp-specialized 设计，允许数据移动、张量核心 MMA（矩阵乘法）指令和 CUDA 核心累加操作重叠
+- FP8 微调：通过修改变以后二进制的 FFMA（融合乘加）指令，调整 yield 和 reuse 位，进一步提升性能
+- 区块调度器：通过统一的调度器调度所有非分组和分组内核，栅格化（Rasterization）以增强 L2 缓存的复用/重用
+
+这些优化使得 DeepGEMM 在大多数矩阵大小上由于专家调优的内核，同时保持代码简洁
+
+### 与其它库对比
+
+- CUTLASS: 功能强大但代码复杂，依赖大量模板和预编译，适合通用场景
+- CuTe: 专注于张量操作抽象，灵活但需要较深理解
+- DeepGEMM: 专注于 FP8 和 Hopper，代码简洁，易于学习和修改，适合特定需求（如 DeepSeek-V3 的 MoE 训练）
 
 ### MoE 中的 GEMM 场景
 

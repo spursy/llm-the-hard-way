@@ -68,3 +68,4 @@ Blakwell
 SIMT
 BLAS
 EPLB
+FFMA
