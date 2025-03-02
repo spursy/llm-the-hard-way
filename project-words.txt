@@ -69,3 +69,5 @@ SIMT
 BLAS
 EPLB
 FFMA
+Smallpond
+HDFS

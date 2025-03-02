@@ -14,6 +14,13 @@ FlashMLA is an efficient MLA decoding kernel for Hopper GPUs, optimized for vari
 - 一个 MLA 解码内核
 - 专门处理可变长度序列
 
+**核心技术**
+
+- 低秩矩阵压缩：MLA 使用低秩矩阵，将 KV 缓存压缩为潜向量，减少内存占用。通过解压潜向量生成独特的 KV 头
+- 针对 GPU 优化：FlashMLA 针对 Hopper GPU 的 Tensor Code 进行优化，实现了可达 3000 GB/s 的显存带宽和 580 TFLOPS 的计算性能
+- Row-wise/Block-wise 优化：细粒度划分，在 shared memory 中原位处理计算，减少额外的中间计算过程的显存占用，减少显存访问次数
+- Split-KV 分块处理：将 KV 拆分给多个 SM（Stream MultiProcessor）处理（或者多次迭代），然后在局部被 partial 计算结果合并
+
 ### MLA
 
 **在注意力机制中引入 "潜变量（Latent Variable）":**
