@@ -66,3 +66,5 @@ RDMA
 mathrm
 Blakwell
 SIMT
+BLAS
+EPLB
