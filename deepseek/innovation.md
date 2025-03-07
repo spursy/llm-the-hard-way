@@ -70,8 +70,92 @@
 - 思维链长度可达数万字，通过多步骤逻辑推理解决问题，提升复杂任务效率
 
 
+## 工程创新
+
+**推理系统的优化目标是：更大的吞吐，更低的延迟？**
+
+`
+为了实现这两个目标，使用大规模跨节点专家并行（Expert Parallelism / EP）。首先 EP 使得 batch size 大大增加，从而提高 GPU 矩阵乘法的效率，提高吞吐。其次 EP 使得专家分散在不同的 GPU 上，每个 GPU 只需要计算很少的专家（因此更少的访存需求），从而降低延迟
+`
+
+但 EP 也增加了系统的复杂性：
+
+- EP 引入跨节点的传输。为了优化吞吐，需要设计合适的计算流程使得传输和计算可以同步进行
+- EP 涉及多个节点，因此天然需要 Data Parallelism (DP)，不同的 DP 之间需要负载均衡
+
+*因此，如何使用 EP 增大 batch size，如何隐藏传输的耗时，如何进行负载均衡？*
+
+### 大规模节点专家并行（Expert Parallelism / EP）
+
+`
+由于 DeepSeek-V3 / R1 的专家数量众多，并且每层 256 个专家中仅激活其中 8 个。模型的高度稀疏性要求采用很大的 overall batch size，才能给每个专家提供足够的 expert batch size，从而实现更大吞吐，更低延迟
+`
+
+**采用多机多卡间的并行策略：**
+
+- Prefill: 路由专家 EP32、MLA 和共享专家 DP32，一个部署单元是 4 节点，32 个冗余路由专家，每张卡 9 个路由专家和 1 个共享专家
+- Decode: 路由专家 EP144、MLA 和共享专家 DP144，一个部署单元是 18 节点，32 个冗余路由专家，每张卡 2 个路由专家和 1 个共享专家
+
+### 计算通信重叠
+
+`
+多机多卡的专家会引入比较大的通信开销，所以使用了双 batch 重叠来掩盖通信开销，提高系统吞吐
+`
+
+**Prefill**
+
+对于 prefill 阶段，两个 batch 的计算和通信交错进行，一个 batch 在进行计算的时候可以去掩盖另一个 batch 的通信开销
+
+![prefill](../pics/prefill.png)
+
+**Decode**
+
+对于 decode 阶段，不同阶段的执行时间有所差别，把 attention 部分拆分成两个 stage，共计 5 个 stage 的流水线来实现计算和通信的重叠
+
+![decode](../pics/decode.png)
+
+### 尽可能地负载均衡
+
+`
+由于采用了很大规模的并行（包括数据并行和专家并行），如果某个 GPU 的计算或通信负载过重，将成为性能瓶颈，拖慢整个系统；同时其他 GPU 因为等待而空转，造成整体利用率下降
+`
+
+**Prefill Load Balancer**
+
+- 核心问题：不同数据并行（DP）实例上的请求个数、长度不同，导致 core-attention 计算量、dispatch 发送量也不同
+- 优化目标：各 GPU 的计算量尽量相同（core-attention 计算负载均衡）、输入的 token 数量尽量相同（dispatch 发送量负载均衡），避免部分 GPU 处理时间过长
+
+**Decode Load Balancer**
+
+- 核心问题：不同数据并行（DP）实例上的请求数量、长度不同，导致 core-attention 计算量（与 KVCache 占用量相关）、dispatch 发送量不同
+- 优化目标：各 GPU 的 KVCache 占用量尽量相同（core-attention 计算负载均衡）、请求数量尽量相同（dispatch 发送量负载均衡）
+
+**Expert-Parallel Load Balancer**
+
+- 核心问题：对于给定的 MoE 模型，存在一些天然高负载专家（expert），导致不同 GPU 的专家计算负载不均衡
+- 优化目标：每个 GPU 上的专家计算量均衡（即最小化所有 GPU 的 dispatch 接收量的最大值）
+
+![prefill-decode-architecture](../pics/prefill-decode-architecture.png)
+
+### 实际的线上系统
+
+- 量化策略
+
+`
+DeepSeek V3 和 R1 的所有服务均使用 H800 GPU，使用和训练一致的精度，即矩阵计算和 dispatch 传输采用和训练一致的 FP8 格式，core-attention 计算和 combine 传输采用和训练一致的 BF16，最大程度保证了服务效果
+`
+
+- 资源动态调整
+
+`
+白天负载负荷高，晚上负荷低，因此在白天的时候，用所有节点部署推理服务。晚上负荷低的时候，减少推理节点，以用来做研究和训练
+`
+
+
 
 
 **Reference**
 
 - [悟透 DeepSeek 创新](https://mp.weixin.qq.com/s/IliUhZOTwyvs2_rQV0Qe8Q)
+- [DeepSeek 再次震惊全球：价格只有 OpenAI 1/25，利润率却超过 500%](https://mp.weixin.qq.com/s/FV4JSZ_8wVSfUyHGiqYaeQ)
+- [profiling 数据的 batch 重叠细节](https://github.com/deepseek-ai/profile-data)
