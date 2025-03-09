@@ -59,6 +59,7 @@
 - SIMT - Single Instruction Multiple Threads (单指令多线程)
 - SM - Stream Multiprocessor (流式多处理器)
 - PTX - Parallel Thread Execution (NVIDIA 是为 GPU 设计的一种低级虚拟指令集架构 ISA)
+- vLLM - Vectorized Large Language Model
 
 
 
