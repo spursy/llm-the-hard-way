@@ -70,6 +70,7 @@
 - HDFS: Hadoop Distributed File System
 - CephFS: Ceph File System
 - GlusterFS: Global File System
+- IDC: Internet Data Center（互联网数据中心）
 
 
 
