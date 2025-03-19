@@ -61,6 +61,20 @@
 - PTX - Parallel Thread Execution (NVIDIA 是为 GPU 设计的一种低级虚拟指令集架构 ISA)
 - vLLM - Vectorized Large Language Model
 
+## Storage
+- RDMA: Remote Direct Memory Access (远程直接内存访问)
+- eRDMA: Enhanced Remote Direct Memory Access (增强型远程直接内存访问)
+- NAS: Network Attached Storage (网络附加存储)
+- HPC: High Performance Computing (高性能计算)
+- IB: InfiniBand (无限带宽，专为 HPC 设计的高速网络技术)
+- HDFS: Hadoop Distributed File System
+- CephFS: Ceph File System
+- GlusterFS: Global File System
+
+
+
+
+
 
 
 
