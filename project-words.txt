@@ -76,3 +76,5 @@ OLTP
 RADOS
 Gluster
 Gbps
+qcow
+libc
